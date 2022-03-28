@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="48856dbe-e753-416d-b38d-0f2c32a2d5a1" name="Changes" comment="add backend boilerplate with copied code from ancient brief" />
+    <list default="true" id="48856dbe-e753-416d-b38d-0f2c32a2d5a1" name="Changes" comment="add backend boilerplate with copied code from ancient brief">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -201,6 +203,8 @@
       <workItem from="1648190738106" duration="33000" />
       <workItem from="1648222052040" duration="2760000" />
       <workItem from="1648467633594" duration="2136000" />
+      <workItem from="1648505896857" duration="42000" />
+      <workItem from="1648505940881" duration="23000" />
     </task>
     <task id="LOCAL-00015" summary="add responsive posts list on home page">
       <created>1645384898307</created>
