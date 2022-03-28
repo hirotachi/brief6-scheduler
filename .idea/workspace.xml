@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="48856dbe-e753-416d-b38d-0f2c32a2d5a1" name="Changes" comment="add backend boilerplate with copied code from ancient brief" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <executable path="composer" />
+    </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package.json" />
+        <option value="JavaScript File" />
+        <option value="SCSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="development" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="hirotachi" />
+        <option name="repository" value="cine-master" />
+      </RepoCoordinatesHolder>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/support" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/macroable" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/pipeline" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/contracts" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/events" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/collections" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/container" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/bus" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/view" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/jenssegers/blade" />
+      <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
+      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="25KrXdJddYTEdkvKfPsPoKz6oOj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="16.13.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="16.11.25" />
+    <property name="js.buildTools.gulp.gulp_package_dir" value="$PROJECT_DIR$/node_modules/gulp" />
+    <property name="js.last.introduce.type" value="CONST" />
+    <property name="last.edited.regexp" value="/{hello}/{nice}/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="pnpm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="settings.editor.selected.configurable" value="Configurable.PHP.Blade" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\said\Documents\projects\brief5\dev\resources\views\posts" />
+      <recent name="C:\Users\said\Documents\projects\brief5\dev\resources\views\layouts" />
+      <recent name="C:\Users\said\Documents\projects\brief5\dev\resources\views" />
+      <recent name="C:\Users\said\Documents\projects\brief5\dev\resources\views\components" />
+      <recent name="C:\Users\said\Documents\projects\brief5\dev\app\core" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="watch (Gulp.js)" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="watch" type="js.build_tools.gulp" temporary="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile>$PROJECT_DIR$/gulpfile.js</gulpfile>
+      <tasks>
+        <task>watch</task>
+      </tasks>
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gulp.js.watch" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="48856dbe-e753-416d-b38d-0f2c32a2d5a1" name="Changes" comment="" />
+      <created>1645286661395</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1645286661395</updated>
+      <workItem from="1645286662958" duration="30658000" />
+      <workItem from="1645358398590" duration="65500000" />
+      <workItem from="1645603862184" duration="61091000" />
+      <workItem from="1645922736733" duration="618000" />
+      <workItem from="1645977218680" duration="7126000" />
+      <workItem from="1646018028925" duration="1037000" />
+      <workItem from="1646248886350" duration="40000" />
+      <workItem from="1646404349562" duration="3224000" />
+      <workItem from="1646409248251" duration="1509000" />
+      <workItem from="1646415578919" duration="1867000" />
+      <workItem from="1646427753724" duration="12916000" />
+      <workItem from="1646815363325" duration="1995000" />
+      <workItem from="1646822484653" duration="1138000" />
+      <workItem from="1647253813688" duration="905000" />
+      <workItem from="1647289256646" duration="10925000" />
+      <workItem from="1647331999328" duration="367000" />
+      <workItem from="1647423674764" duration="14260000" />
+      <workItem from="1647610903747" duration="3849000" />
+      <workItem from="1648047843175" duration="1166000" />
+      <workItem from="1648190738106" duration="33000" />
+      <workItem from="1648222052040" duration="2760000" />
+      <workItem from="1648467633594" duration="2136000" />
+    </task>
+    <task id="LOCAL-00015" summary="add responsive posts list on home page">
+      <created>1645384898307</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1645384898307</updated>
+    </task>
+    <task id="LOCAL-00016" summary="finish home page responsive styling">
+      <created>1645385503872</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1645385503872</updated>
+    </task>
+    <task id="LOCAL-00017" summary="add post view page with responsive styling">
+      <created>1645393683380</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1645393683380</updated>
+    </task>
+    <task id="LOCAL-00018" summary="add responsive comments section to post page">
+      <created>1645471892439</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1645471892439</updated>
+    </task>
+    <task id="LOCAL-00019" summary="add ability to spoof request method">
+      <created>1645474043459</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1645474043459</updated>
+    </task>
+    <task id="LOCAL-00020" summary="create responsive shared posts form with dynamic components">
+      <created>1645482595140</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1645482595140</updated>
+    </task>
+    <task id="LOCAL-00021" summary="adjust Route not found handler">
+      <created>1645482688757</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1645482688757</updated>
+    </task>
+    <task id="LOCAL-00022" summary="add button to direct to create post page">
+      <created>1645484104530</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1645484104530</updated>
+    </task>
+    <task id="LOCAL-00023" summary="add edit button for posts">
+      <created>1645484875842</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1645484875842</updated>
+    </task>
+    <task id="LOCAL-00024" summary="add responsive auth page for login and register">
+      <created>1645565761227</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1645565761227</updated>
+    </task>
+    <task id="LOCAL-00025" summary="add dependency injection feature on controllers add refactor auth route handlers">
+      <created>1645570105581</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1645570105581</updated>
+    </task>
+    <task id="LOCAL-00026" summary="refactor code add name to home route">
+      <created>1645570812174</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1645570812174</updated>
+    </task>
+    <task id="LOCAL-00027" summary="add docker-compose config add users table migration and refactor autoload to be handled by composer">
+      <created>1645657117880</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1645657117880</updated>
+    </task>
+    <task id="LOCAL-00028" summary="add Model with shared methods and implement auth methods for Auth controller with logic to handle errors on auth view">
+      <created>1645744683859</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1645744683862</updated>
+    </task>
+    <task id="LOCAL-00029" summary="connect Auth middleware with auth page">
+      <created>1645745090056</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1645745090056</updated>
+    </task>
+    <task id="LOCAL-00030" summary="add auth check on sections and add logo to navigation">
+      <created>1645773768760</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1645773768761</updated>
+    </task>
+    <task id="LOCAL-00031" summary="make logout route redirect to requesting route">
+      <created>1645891259956</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1645891259958</updated>
+    </task>
+    <task id="LOCAL-00032" summary="refactor code and add ability to use middleware">
+      <created>1645896299447</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1645896299447</updated>
+    </task>
+    <task id="LOCAL-00033" summary="add ability to pass callback as middleware and make create and update routes on posts go through middleware">
+      <created>1645897059301</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1645897059301</updated>
+    </task>
+    <task id="LOCAL-00034" summary="refactor posts handlers to their own file">
+      <created>1645897525025</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1645897525025</updated>
+    </task>
+    <task id="LOCAL-00035" summary="add Post and create posts table migration">
+      <created>1645898304816</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1645898304816</updated>
+    </task>
+    <task id="LOCAL-00036" summary="add ability to set defaults in model children and refactor create and view route to post controller">
+      <created>1645901649421</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1645901649422</updated>
+    </task>
+    <task id="LOCAL-00037" summary="refactor create edit and update post handlers to PostController">
+      <created>1645903964166</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1645903964166</updated>
+    </task>
+    <task id="LOCAL-00038" summary="add view method to directly use views without handlers">
+      <created>1645904312362</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1645904312362</updated>
+    </task>
+    <task id="LOCAL-00039" summary="group posts handlers in route group">
+      <created>1645905187395</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1645905187395</updated>
+    </task>
+    <task id="LOCAL-00040" summary="add posts delete route handler">
+      <created>1645905962578</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1645905962579</updated>
+    </task>
+    <task id="LOCAL-00041" summary="add author field detail on post view">
+      <created>1645907046804</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1645907046805</updated>
+    </task>
+    <task id="LOCAL-00042" summary="add ability to add comments to posts and fetch each comment  with it's own author">
+      <created>1645913872622</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1645913872624</updated>
+    </task>
+    <task id="LOCAL-00043" summary="add ability to return rows in order">
+      <created>1645914581183</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1645914581184</updated>
+    </task>
+    <task id="LOCAL-00044" summary="add delete comments functionality">
+      <created>1645916934278</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1645916934279</updated>
+    </task>
+    <task id="LOCAL-00045" summary="add styling to error pages">
+      <created>1645918699120</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1645918699130</updated>
+    </task>
+    <task id="LOCAL-00046" summary="refactor auth and owner checking on blade templates into directives">
+      <created>1645982964016</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1645982964016</updated>
+    </task>
+    <task id="LOCAL-00047" summary="fix float on input not being processed correctly and ability to add custom attributes to input">
+      <created>1645984161638</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1645984161638</updated>
+    </task>
+    <task id="LOCAL-00048" summary="add view and controller method to view user's posts">
+      <created>1645985218439</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1645985218439</updated>
+    </task>
+    <task id="LOCAL-00049" summary="fix auth button style">
+      <created>1645986480281</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1645986480281</updated>
+    </task>
+    <task id="LOCAL-00050" summary="refactor auth login and register view handlers to use static method">
+      <created>1646018379818</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1646018379819</updated>
+    </task>
+    <task id="LOCAL-00051" summary="change route not found response to match site theme">
+      <created>1646424469645</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1646424469646</updated>
+    </task>
+    <task id="LOCAL-00052" summary="fix url formatting on Router to handle ending slashes">
+      <created>1646814888369</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1646814888369</updated>
+    </task>
+    <task id="LOCAL-00053" summary="add bootstrap and use it on form btn">
+      <created>1647291903636</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1647291903637</updated>
+    </task>
+    <task id="LOCAL-00054" summary="adjust comment textarea to fit bootstrap usage">
+      <created>1647294116064</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1647294116065</updated>
+    </task>
+    <task id="LOCAL-00055" summary="add ability to remove or create comment using client side fetch">
+      <created>1647300229881</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1647300229881</updated>
+    </task>
+    <task id="LOCAL-00056" summary="fix auth not finding user on session destroy">
+      <created>1647300604739</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1647300604739</updated>
+    </task>
+    <task id="LOCAL-00057" summary="add contact page with bootstrap and add router to show contact page">
+      <created>1647427273178</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1647427273180</updated>
+    </task>
+    <task id="LOCAL-00058" summary="add name of logged-in user to navigation">
+      <created>1647449366802</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1647449366802</updated>
+    </task>
+    <task id="LOCAL-00059" summary="fix comment input not returning to original size on submit">
+      <created>1647459688373</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1647459688373</updated>
+    </task>
+    <task id="LOCAL-00060" summary="add code comment and refactor forbidden response content on middleware">
+      <created>1647461140045</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1647461140045</updated>
+    </task>
+    <task id="LOCAL-00061" summary="fix bug register handler not sending user to be saved to session">
+      <created>1647461945487</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1647461945487</updated>
+    </task>
+    <task id="LOCAL-00062" summary="add logged middleware to redirect when user is already logged and interface for middleware">
+      <created>1647464676852</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1647464676852</updated>
+    </task>
+    <task id="LOCAL-00063" summary="add backend boilerplate with copied code from ancient brief">
+      <created>1648476653753</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1648476653755</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="group posts handlers in route group" />
+    <MESSAGE value="add posts delete route handler" />
+    <MESSAGE value="add author field detail on post view" />
+    <MESSAGE value="add ability to add comments to posts and fetch each comment  with it's own author" />
+    <MESSAGE value="add ability to return rows in order" />
+    <MESSAGE value="add delete comments functionality" />
+    <MESSAGE value="add styling to error pages" />
+    <MESSAGE value="refactor auth and owner checking on blade templates into directives" />
+    <MESSAGE value="fix float on input not being processed correctly and ability to add custom attributes to input" />
+    <MESSAGE value="add view and controller method to view user's posts" />
+    <MESSAGE value="fix auth button style" />
+    <MESSAGE value="refactor auth login and register view handlers to use static method" />
+    <MESSAGE value="change route not found response to match site theme" />
+    <MESSAGE value="fix url formatting on Router to handle ending slashes" />
+    <MESSAGE value="add bootstrap and use it on form btn" />
+    <MESSAGE value="adjust comment textarea to fit bootstrap usage" />
+    <MESSAGE value="add ability to remove or create comment using client side fetch" />
+    <MESSAGE value="fix auth not finding user on session destroy" />
+    <MESSAGE value="add contact page with bootstrap and add router to show contact page" />
+    <MESSAGE value="add name of logged-in user to navigation" />
+    <MESSAGE value="fix comment input not returning to original size on submit" />
+    <MESSAGE value="add code comment and refactor forbidden response content on middleware" />
+    <MESSAGE value="fix bug register handler not sending user to be saved to session" />
+    <MESSAGE value="add logged middleware to redirect when user is already logged and interface for middleware" />
+    <MESSAGE value="add backend boilerplate with copied code from ancient brief" />
+    <option name="LAST_COMMIT_MESSAGE" value="add backend boilerplate with copied code from ancient brief" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

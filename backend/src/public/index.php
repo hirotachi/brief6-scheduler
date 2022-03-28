@@ -6,7 +6,7 @@ use App\Core\Route;
 use App\Kernel;
 
 
-require __DIR__.'/../vendor/autoload.php';
+require dirname(__DIR__).'/vendor/autoload.php';
 
 
 // setup routing files

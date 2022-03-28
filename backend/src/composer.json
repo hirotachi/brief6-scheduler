@@ -14,7 +14,7 @@
       "config/index.php"
     ],
     "psr-4": {
-      "App\\": "app/"
+      "App\\": "./app/"
     }
   }
 }
