@@ -1,5 +1,6 @@
 <template>
-  token input for verification
+
+  <router-view></router-view>
 </template>
 
 <script>
