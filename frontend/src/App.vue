@@ -1,17 +1,37 @@
-<template>
 
-  <router-view></router-view>
+
+
+<template>
+  <div>book a meeting with Jhon smith</div>
+  <button @click="setCurrentView('booking')">booking view</button>
+  <button @click="setCurrentView('home')">home view</button>
+  <component :is="currentComponent"/>
 </template>
 
-<script>
+<script setup>
+import Home from './views/Home';
 
-export default {
-  name: 'App',
-  components: {
+import { computed, ref } from 'vue';
+import Booking from '@/views/Booking';
 
-  }
+const views = {home: Home, booking: Booking}
+
+const currentView = ref("home");
+
+
+
+
+const currentComponent = computed(() => {
+  return views[currentView.value];
+})
+
+function setCurrentView(name) {
+  currentView.value = name
 }
+
+
 </script>
+
 
 <style>
 
