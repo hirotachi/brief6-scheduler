@@ -1,6 +1,8 @@
-import React, { useMemo, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import styles from "@modules/Booking.module.scss";
 import BookingForm from "@components/BookingForm";
+import { HomeContext } from "@pages/[[...slug]]";
+import { formatDate } from "@utils/helpers";
 
 export const bookingSlots = [
   "10 h to 10:30 h",
@@ -10,63 +12,41 @@ export const bookingSlots = [
   "16 h to 16:30 h",
 ];
 
-type BookingProps = {
-  book?: (bookingData: BookingData) => void;
-  bookings?: BookingData[];
-};
-
-export type BookingData = {
-  subject: string;
-  date: string;
-  slot: number;
-};
-
 const tomorrow = new Date(new Date().setDate(new Date().getDate() + 1));
-const Booking = (props: BookingProps) => {
-  const { book, bookings = [] } = props;
+const Booking = () => {
+  const { bookings, changeFormData, formData } = useContext(HomeContext);
   const [currentDate, setCurrentDate] = useState(tomorrow);
 
-  const bookingDataInitialState = {
-    subject: "",
-    date: "",
-    slot: undefined,
-  };
-  const [bookingData, setBookingData] = useState<BookingData>(
-    bookingDataInitialState
-  );
-
   const handleChange = (e) => setCurrentDate(new Date(e.target.value));
+
   const changeBooking = (slot) =>
-    setBookingData((v) => ({
+    changeFormData((v) => ({
       ...v,
       slot,
-      date: currentDate.toJSON().slice(0, 10),
+      date: currentDate,
     }));
 
-  const usedSlotsSet = useMemo(() => {
-    return new Set(bookings.map((b) => `${b.date}-${b.slot}`));
+  const availableSlots = useMemo(() => {
+    const usedSlotsSet = new Set(
+      bookings.map((b) => `${formatDate(b.date)}-${b.slot}`)
+    );
+    return bookingSlots.filter((slot, index) => {
+      return !usedSlotsSet.has(`${formatDate(currentDate)}-${index}`);
+    });
   }, [bookings]);
-  const handleSubjectChange = (subject) =>
-    setBookingData((v) => ({ ...v, subject }));
-  const onBookingSubmit = () => {
-    book(bookingData);
-    setBookingData(bookingDataInitialState);
-  };
-  const availableSlots = bookingSlots.filter((slot, index) => {
-    return !usedSlotsSet.has(`${currentDate.toJSON()?.slice(0, 10)}-${index}`);
-  });
+
   return (
     <div className={styles.booking}>
-      {bookingData.slot === undefined && (
+      {formData.slot === undefined && (
         <>
           <label className={styles.date}>
             <span className={styles.text}>choose a date</span>
             <input
               className={styles.input}
               type="date"
-              value={currentDate.toJSON()?.slice(0, 10)}
+              value={formatDate(currentDate)}
               onChange={handleChange}
-              min={tomorrow.toJSON()?.slice(0, 10)}
+              min={formatDate(tomorrow)}
             />
           </label>
           <div className={styles.slots}>
@@ -93,14 +73,7 @@ const Booking = (props: BookingProps) => {
           </div>
         </>
       )}
-      {bookingData.slot !== undefined && (
-        <BookingForm
-          handleSubjectChange={handleSubjectChange}
-          onSubmit={onBookingSubmit}
-          cancel={() => changeBooking(undefined)}
-          data={bookingData}
-        />
-      )}
+      {formData.slot !== undefined && <BookingForm />}
     </div>
   );
 };
