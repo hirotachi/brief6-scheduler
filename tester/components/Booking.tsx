@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from "react";
+import React, { useContext } from "react";
 import styles from "@modules/Booking.module.scss";
 import BookingForm from "@components/BookingForm";
 import { HomeContext } from "@pages/[[...slug]]";
@@ -12,28 +12,18 @@ export const bookingSlots = [
   "16 h to 16:30 h",
 ];
 
-const tomorrow = new Date(new Date().setDate(new Date().getDate() + 1));
+export const tomorrow = new Date(new Date().setDate(new Date().getDate() + 1));
 const Booking = () => {
-  const { bookings, changeFormData, formData } = useContext(HomeContext);
-  const [currentDate, setCurrentDate] = useState(tomorrow);
+  const { changeFormData, formData, availableSlots } = useContext(HomeContext);
 
-  const handleChange = (e) => setCurrentDate(new Date(e.target.value));
+  const handleChange = (e) =>
+    changeFormData((v) => ({ ...v, date: e.target.valueAsDate }));
 
   const changeBooking = (slot) =>
     changeFormData((v) => ({
       ...v,
       slot,
-      date: currentDate,
     }));
-
-  const availableSlots = useMemo(() => {
-    const usedSlotsSet = new Set(
-      bookings.map((b) => `${formatDate(b.date)}-${b.slot}`)
-    );
-    return bookingSlots.filter((slot, index) => {
-      return !usedSlotsSet.has(`${formatDate(currentDate)}-${index}`);
-    });
-  }, [bookings]);
 
   return (
     <div className={styles.booking}>
@@ -44,13 +34,13 @@ const Booking = () => {
             <input
               className={styles.input}
               type="date"
-              value={formatDate(currentDate)}
+              value={formatDate(formData.date)}
               onChange={handleChange}
               min={formatDate(tomorrow)}
             />
           </label>
           <div className={styles.slots}>
-            {currentDate.getTime() ? (
+            {formData.date.getTime() ? (
               !availableSlots.length ? (
                 <p className={styles.placeholder}>no slots available</p>
               ) : (

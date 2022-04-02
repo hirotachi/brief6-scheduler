@@ -1,8 +1,10 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useMemo, useState } from "react";
 import styles from "@modules/Home.module.scss";
-import Booking from "@components/Booking";
+import Booking, { bookingSlots, tomorrow } from "@components/Booking";
 import MyHistory from "@components/MyHistory";
 import { useRouter } from "next/router";
+import BookingForm from "@components/BookingForm";
+import { formatDate } from "@utils/helpers";
 
 type HomeContextValue = {
   handleSubmitForm: () => void;
@@ -13,6 +15,8 @@ type HomeContextValue = {
   removeBooking: (id: number) => void;
   bookings: BookingData[];
   resetFormData: () => void;
+  availableSlots: string[];
+  availableSlotsSet: Set<string>;
 };
 
 export const HomeContext = createContext<HomeContextValue>(null);
@@ -24,13 +28,14 @@ export type BookingData = {
   slot: number;
 };
 
+let currentId = 1;
 const index = () => {
   const router = useRouter();
   const currentRoute = router.query?.slug?.[0] ?? "booking";
 
   const formDataInitialState: BookingData = {
     subject: "",
-    date: null,
+    date: tomorrow,
     slot: undefined,
   };
 
@@ -41,7 +46,7 @@ const index = () => {
       slot: 0,
       subject: "something",
       date: new Date(),
-      id: 1,
+      id: currentId,
     },
   ]);
 
@@ -63,16 +68,32 @@ const index = () => {
             ...list,
             {
               ...data,
-              id: list.length,
+              id: ++currentId,
             },
           ];
     });
     resetFormData();
+    if (currentRoute === "edit") {
+      router.replace("/history");
+    }
   };
 
   const resetFormData = () => {
     setFormData(formDataInitialState);
   };
+
+  const { availableSlots, availableSlotsSet } = useMemo(() => {
+    const usedSlotsSet = new Set(
+      bookings.map((b) => `${formatDate(b.date)}-${b.slot}`)
+    );
+    const availableSlots = bookingSlots.filter((slot, index) => {
+      return !usedSlotsSet.has(`${formatDate(formData.date)}-${index}`);
+    });
+    return {
+      availableSlots,
+      availableSlotsSet: new Set(availableSlots),
+    };
+  }, [bookings, formData.date]);
 
   const contextValue: HomeContextValue = {
     resetFormData,
@@ -81,19 +102,16 @@ const index = () => {
     handleSubmitForm,
     removeBooking,
     bookings,
+    availableSlots,
+    availableSlotsSet,
   };
-
-  useEffect(() => {
-    if (currentRoute !== "booking" && formData.slot !== undefined) {
-      resetFormData();
-    }
-  }, [currentRoute, formData]);
 
   return (
     <HomeContext.Provider value={contextValue}>
       <div className={styles.home}>
         {currentRoute === "booking" && <Booking />}
         {currentRoute === "history" && <MyHistory />}
+        {currentRoute === "edit" && formData.id && <BookingForm />}
       </div>
     </HomeContext.Provider>
   );

@@ -6,17 +6,31 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { bookingSlots } from "@components/Booking";
+import { bookingSlots, tomorrow } from "@components/Booking";
 import styles from "@modules/BookingForm.module.scss";
 import { HomeContext } from "@pages/[[...slug]]";
 import clsx from "clsx";
+import { formatDate } from "@utils/helpers";
+import { useRouter } from "next/router";
 
 const BookingForm = () => {
+  const router = useRouter();
   const [error, setError] = useState("");
-  const { formData, changeFormData, handleSubmitForm, resetFormData } =
-    useContext(HomeContext);
+  const {
+    formData,
+    changeFormData,
+    availableSlots,
+    availableSlotsSet,
+    handleSubmitForm,
+    resetFormData,
+  } = useContext(HomeContext);
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     changeFormData((data) => ({ ...data, subject: e.target.value }));
+  };
+
+  const handleDateChange = (e) => {
+    const date = e.target.valueAsDate;
+    changeFormData((data) => ({ ...data, date }));
   };
 
   const handleEnter: KeyboardEventHandler = (e) => {
@@ -26,7 +40,6 @@ const BookingForm = () => {
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    ref.current.focus();
     const handler = (e) => {
       if (e.key === "Escape") {
         resetFormData();
@@ -36,6 +49,10 @@ const BookingForm = () => {
     return () => window.removeEventListener("keyup", handler);
   });
 
+  useEffect(() => {
+    ref.current.focus();
+  }, []);
+
   const handleSubmit = () => {
     if (formData.subject) {
       return handleSubmitForm();
@@ -44,6 +61,22 @@ const BookingForm = () => {
   };
 
   const showError = error && !formData.subject;
+  const isEditMode = formData.id;
+
+  function cancel() {
+    resetFormData();
+    router.back();
+  }
+
+  const changeSlot = (slot) => changeFormData((v) => ({ ...v, slot }));
+
+  const [previousSlot, setPreviousSlot] = useState(formData.slot);
+  useEffect(() => {
+    if (isEditMode) {
+      setPreviousSlot(formData.slot);
+    }
+  }, [isEditMode]);
+
   return (
     <div className={styles.form}>
       <div className={styles.formMain}>
@@ -59,22 +92,64 @@ const BookingForm = () => {
           />
           {showError && <span className={styles.message}>{error}</span>}
         </label>
-        <div className={styles.fields}>
-          <label className={styles.field}>
-            <span className={styles.text}>Date:</span>
-            <span className={styles.val}>{formData.date.toDateString()}</span>
-          </label>
-          <label className={styles.field}>
-            <span className={styles.text}>Slot:</span>
-            <span className={styles.val}>{bookingSlots[formData.slot]}</span>
-          </label>
+        <div className={clsx(styles.fields, isEditMode && styles.fieldsEdit)}>
+          {isEditMode && (
+            <>
+              <label className={clsx(styles.field, styles.fieldEdit)}>
+                <span className={styles.text}>Date</span>
+                <input
+                  type="date"
+                  value={formatDate(formData.date)}
+                  onChange={handleDateChange}
+                  min={formatDate(tomorrow)}
+                />
+              </label>
+              <label className={clsx(styles.field, styles.fieldEdit)}>
+                <span className={styles.text}>Slot</span>
+                <div className={styles.slots}>
+                  {bookingSlots.map((slot, index) => {
+                    if (index !== previousSlot && !availableSlotsSet.has(slot))
+                      return;
+                    return (
+                      <span
+                        onClick={() => changeSlot(index)}
+                        className={clsx(
+                          styles.slot,
+                          index === formData.slot && styles.slotSelected
+                        )}
+                        key={slot}
+                      >
+                        {slot}
+                      </span>
+                    );
+                  })}
+                </div>
+              </label>
+            </>
+          )}
+          {!isEditMode && (
+            <>
+              <label className={styles.field}>
+                <span className={styles.text}>Date:</span>
+                <span className={styles.val}>
+                  {formData.date.toDateString()}
+                </span>
+              </label>
+              <label className={styles.field}>
+                <span className={styles.text}>Slot:</span>
+                <span className={styles.val}>
+                  {bookingSlots[formData.slot]}
+                </span>
+              </label>
+            </>
+          )}
         </div>
       </div>
       <div className={styles.btns}>
         <span className={styles.submit} onClick={handleSubmit}>
-          book now
+          {isEditMode ? "update" : "book now"}
         </span>
-        <span className={styles.cancel} onClick={resetFormData}>
+        <span className={styles.cancel} onClick={cancel}>
           cancel
         </span>
       </div>
