@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import styles from "@modules/Register.module.scss";
 import Link from "next/link";
+import { formatDate } from "@utils/helpers";
 
 const register = () => {
-  const [state, setState] = useState({
+  const initialState = {
     firstName: "",
     lastName: "",
-    birthdate: null,
+    birthdate: new Date(),
     profession: "",
-  });
+  };
+  const [state, setState] = useState(initialState);
   const placeholders: { [key in keyof typeof state]?: string } = {
     firstName: "John",
     lastName: "Smith",
     profession: "Software Developer",
   };
-
   return (
     <div className={styles.register}>
       <h1 className={styles.header}>Sign Up</h1>
@@ -24,15 +25,24 @@ const register = () => {
             /[A-Z][a-z]*/g,
             (v) => ` ${v.toLowerCase()}`
           );
-          const inputType = key === "birthdate" ? "date" : "text";
+          const isBirthdate = key === "birthdate";
+          const inputType = isBirthdate ? "date" : "text";
           const changeHandler = (e) => {
-            setState((v) => ({ ...v, [key]: e.target.value }));
+            setState((v) => ({
+              ...v,
+              [key]: e.target[isBirthdate ? "valueAsDate" : "value"],
+            }));
           };
           const placeholder = placeholders[key];
+          let val = state[key];
+          if (isBirthdate) {
+            val = formatDate(val);
+          }
           return (
             <label key={key} className={styles.field}>
               <span className={styles.text}>{fieldName}</span>
               <input
+                value={val}
                 type={inputType}
                 onChange={changeHandler}
                 placeholder={placeholder}
@@ -42,7 +52,7 @@ const register = () => {
         })}
         <p className={styles.other}>
           Already have an account?{" "}
-          <Link href={"login"}>
+          <Link href={"/login"}>
             <a>Sign In</a>
           </Link>
         </p>
