@@ -22,6 +22,10 @@ foreach ($routingFiles as $routingFile => $routeGroup) {
 
 
 $kernel = new Kernel();
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token, Cookie');
+header("Access-Control-Allow-Credentials: true");
 
 $response = $kernel->handle(Request::capture());
 $response?->send();

@@ -2,6 +2,9 @@
 
 
 use App\Core\RedirectResponse;
+use App\Core\Request;
+use Dotenv\Dotenv;
+use Firebase\JWT\JWT;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -15,6 +18,7 @@ function response(string|array $content = "", int $status = Response::HTTP_OK, a
 {
     if (is_array($content)) {
         $content = json_encode($content);
+        return new Response($content, $status, ["content-type" => "application/json", ...$headers]);
     }
     return new Response($content, $status, $headers);
 }
@@ -22,7 +26,7 @@ function response(string|array $content = "", int $status = Response::HTTP_OK, a
 
 function loadEnv($envName, $default = "")
 {
-    $dotenv = \Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+    $dotenv = Dotenv::createImmutable(dirname(__DIR__));
     $dotenv->load();
     return $_ENV[$envName] ?? $default;
 }
@@ -52,4 +56,32 @@ function verifyArrayKeys($requiredKeys, $arr): bool|array
         }
     }
     return count($notFilled) > 0 ? $notFilled : false;
+}
+
+
+function generateToken(object $user): string
+{
+    $payload = [
+        "userId" => $user->id,
+        "iat" => (new DateTime())->getTimestamp()
+    ];
+    return JWT::encode($payload, config()->jwtSecret, 'HS256');
+}
+
+
+function verifyAuthToken(Request $req)
+{
+    $authToken = $req->headers->get("authorization");
+    if (!$authToken) {
+        return;
+    }
+    $arr = preg_split("/\s+/", $authToken);
+    $token = $arr[1];
+
+    try {
+        $payload = JWT::decode($token, new \Firebase\JWT\Key(config()->jwtSecret, "HS256"));
+        $req->attributes->set("userId", $payload->userId);
+    } catch (Exception $e) {
+
+    }
 }

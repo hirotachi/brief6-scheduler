@@ -75,11 +75,14 @@ class Route
         if ($response instanceof Response) {
             return $response;
         }
+        $res = new Response();
         $contentType = gettype($response);
         if ($contentType !== "string") {
             $response = json_encode($response);
+            $res->headers->set("Content-Type", "application/json");
         }
-        return new Response($response);
+        $res->setContent($response);
+        return $res;
     }
 
     private static function formatURL($url): string

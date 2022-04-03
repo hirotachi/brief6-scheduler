@@ -11,7 +11,11 @@ const login = () => {
   const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
     if (!value) return;
-    console.log("submit to api");
+    const formData = new FormData();
+    formData.append("key", value);
+    fetch("http://localhost:8000/login", { method: "POST", body: formData })
+      .then((res) => res.json())
+      .then(console.log);
   };
   return (
     <div className={styles.login}>

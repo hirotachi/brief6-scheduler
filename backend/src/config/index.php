@@ -15,7 +15,8 @@ function config(): object
             'username' => loadEnv('DB_USERNAME', 'forge'),
             'password' => loadEnv('DB_PASSWORD', ''),
             'charset' => 'utf8mb4',
-        ]
+        ],
+        "jwtSecret" => loadEnv("JWT_SECRET", "")
     ];
     return (object) $_CONFIG;
 }
