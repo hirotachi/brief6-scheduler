@@ -5,6 +5,7 @@ import MyHistory from "@components/MyHistory";
 import { useRouter } from "next/router";
 import BookingForm from "@components/BookingForm";
 import { formatDate } from "@utils/helpers";
+import Link from "next/link";
 
 type HomeContextValue = {
   handleSubmitForm: () => void;
@@ -106,11 +107,34 @@ const index = () => {
     availableSlotsSet,
   };
 
+  const isHome = currentRoute === "booking";
+  const isHistory = currentRoute === "history";
   return (
     <HomeContext.Provider value={contextValue}>
       <div className={styles.home}>
-        {currentRoute === "booking" && <Booking />}
-        {currentRoute === "history" && <MyHistory />}
+        <div className={styles.intro}>
+          <div className={styles.avatar}>
+            <img
+              src="https://images.unsplash.com/photo-1599566147214-ce487862ea4f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=347&q=80"
+              alt="john smith"
+            />
+          </div>
+          <p className={styles.text}>Book a meeting with John Smith</p>
+        </div>
+        <div className={styles.controls}>
+          {!isHome && (
+            <Link href={"/"}>
+              <a className={styles.booking}>new appointment</a>
+            </Link>
+          )}
+          {!isHistory && (
+            <Link href={"/history"}>
+              <a className={styles.history}>My history</a>
+            </Link>
+          )}
+        </div>
+        {isHome && <Booking />}
+        {isHistory && <MyHistory />}
         {currentRoute === "edit" && formData.id && <BookingForm />}
       </div>
     </HomeContext.Provider>
