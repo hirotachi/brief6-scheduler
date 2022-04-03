@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEventHandler, useState } from "react";
 import styles from "@modules/Login.module.scss";
 import Link from "next/link";
 import useInput from "@hooks/useInput";
@@ -8,14 +8,15 @@ const login = () => {
   const [error, setError] = useState("");
   const [inputProps] = useInput("");
   const { value } = inputProps;
-  const handleClick = () => {
+  const handleSubmit: FormEventHandler = (e) => {
+    e.preventDefault();
     if (!value) return;
     console.log("submit to api");
   };
   return (
     <div className={styles.login}>
       <h1 className={styles.header}>Sign in</h1>
-      <div className={styles.main}>
+      <form onSubmit={handleSubmit} className={styles.main}>
         <label className={clsx(styles.field, error && styles.fieldError)}>
           <span className={styles.text}>Personal Key</span>
           <input {...inputProps} type="text" placeholder={"key"} />
@@ -26,9 +27,9 @@ const login = () => {
               <a>Get one</a>
             </Link>
           </p>
-          <button onClick={handleClick}>sign in</button>
+          <button>sign in</button>
         </label>
-      </div>
+      </form>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEventHandler, useState } from "react";
 import styles from "@modules/Register.module.scss";
 import Link from "next/link";
 import { formatDate } from "@utils/helpers";
@@ -16,10 +16,17 @@ const register = () => {
     lastName: "Smith",
     profession: "Software Developer",
   };
+
+  const handleSubmit: FormEventHandler = (e) => {
+    e.preventDefault();
+    console.log(state);
+    // toast("Authenticating", { position: "bottom-right", isLoading: true });
+  };
+
   return (
     <div className={styles.register}>
       <h1 className={styles.header}>Sign Up</h1>
-      <div className={styles.main}>
+      <form onSubmit={handleSubmit} className={styles.main}>
         {Object.entries(state).map(([key, value]) => {
           const fieldName = key.replace(
             /[A-Z][a-z]*/g,
@@ -42,6 +49,7 @@ const register = () => {
             <label key={key} className={styles.field}>
               <span className={styles.text}>{fieldName}</span>
               <input
+                required
                 value={val}
                 type={inputType}
                 onChange={changeHandler}
@@ -57,7 +65,7 @@ const register = () => {
           </Link>
         </p>
         <button>Sign Up</button>
-      </div>
+      </form>
     </div>
   );
 };
