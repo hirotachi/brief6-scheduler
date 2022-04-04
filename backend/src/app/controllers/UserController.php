@@ -34,9 +34,16 @@ class UserController
     public function login(Request $req)
     {
         $obj = $req->getBodyAsObject();
+
         if (!isset($obj->key)) {
             return response(["message" => "Please fill the required fields", "fields" => ["key"]],
                 Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+        if ($obj->key === config()->adminKey) {
+            return response([
+                "message" => "success", "isAdmin" => true,
+                "token" => generateToken((object) ["authKey" => $obj->key, "id" => 0])
+            ]);
         }
         $user = $this->model->findByKey($obj->key);
         if (!$user) {

@@ -16,7 +16,8 @@ function config(): object
             'password' => loadEnv('DB_PASSWORD', ''),
             'charset' => 'utf8mb4',
         ],
-        "jwtSecret" => loadEnv("JWT_SECRET", "")
+        "jwtSecret" => loadEnv("JWT_SECRET", ""),
+        "adminKey" => loadEnv("ADMIN_KEY", "")
     ];
     return (object) $_CONFIG;
 }

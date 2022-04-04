@@ -63,6 +63,7 @@ function generateToken(object $user): string
 {
     $payload = [
         "userId" => $user->id,
+        "key" => $user->authKey,
         "iat" => (new DateTime())->getTimestamp()
     ];
     return JWT::encode($payload, config()->jwtSecret, 'HS256');
