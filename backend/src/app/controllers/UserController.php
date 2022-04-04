@@ -3,7 +3,6 @@
 namespace App\controllers;
 
 use App\Core\Request;
-use App\core\VerificationException;
 use App\models\User;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,39 +16,46 @@ class UserController
         $this->model = $model;
     }
 
-    public function register(Request $req)
+    public function all(Request $req)
     {
-        $key = uniqid();
-        $data = [...$req->getBody(), "authKey" => $key];
-        try {
-            $id = $this->model->create($data);
-        } catch (VerificationException $e) {
-            return response(["message" => "Please fill the required fields", "fields" => $e->getFields()],
-                Response::HTTP_UNPROCESSABLE_ENTITY);
+        $query = "";
+        $placeholders = [];
+        $search = $req->query->get("q");
+        if ($search) {
+            $query = "where firstName like :search or lastName like :search";
         }
-        $user = (object) [...$data, "id" => $id];
-        return response(["message" => "success", "key" => $key, "token" => generateToken($user)]);
+        $users = $this->model->findAll($query, $placeholders);
+
+        return array_map(function ($v) {
+            $new = $v;
+            unset($new->authKey);
+            return $new;
+        }, $users);
     }
 
-    public function login(Request $req)
+    public function update(Request $req)
     {
-        $obj = $req->getBodyAsObject();
+        $id = $req->attributes->get("id");
+        if (!$id || !($user = $this->model->findByID($id))) {
+            return response(["error" => "user not found"], Response::HTTP_NOT_FOUND);
+        }
+        $updated = $this->model->updateByID($id, $req->getBody());
+        if (!$updated) {
+            return response(["error" => "update not successful"], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+        return ["message" => "success"];
+    }
 
-        if (!isset($obj->key)) {
-            return response(["message" => "Please fill the required fields", "fields" => ["key"]],
-                Response::HTTP_UNPROCESSABLE_ENTITY);
+    public function delete(Request $req)
+    {
+        $id = $req->attributes->get("id");
+        if (!$id || !($user = $this->model->findByID($id))) {
+            return response(["error" => "user not found"], Response::HTTP_NOT_FOUND);
         }
-        if ($obj->key === config()->adminKey) {
-            return response([
-                "message" => "success", "isAdmin" => true,
-                "token" => generateToken((object) ["authKey" => $obj->key, "id" => 0])
-            ]);
+        $deleted = $this->model->deleteByID($id);
+        if (!$deleted) {
+            return response(["error" => "deletion not successful"], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
-        $user = $this->model->findByKey($obj->key);
-        if (!$user) {
-            return response(["message" => "wrong personal key"], Response::HTTP_FORBIDDEN);
-        }
-
-        return response(["message" => "success", "token" => generateToken($user)]);
+        return ["message" => "success"];
     }
 }

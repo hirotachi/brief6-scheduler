@@ -5,6 +5,7 @@ use App\Core\RedirectResponse;
 use App\Core\Request;
 use Dotenv\Dotenv;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -78,11 +79,10 @@ function verifyAuthToken(Request $req)
     }
     $arr = preg_split("/\s+/", $authToken);
     $token = $arr[1];
-
     try {
-        $payload = JWT::decode($token, new \Firebase\JWT\Key(config()->jwtSecret, "HS256"));
+        $payload = JWT::decode($token, new Key(config()->jwtSecret, "HS256"));
+        $req->attributes->set("key", $payload->key);
         $req->attributes->set("userId", $payload->userId);
     } catch (Exception $e) {
-
     }
 }

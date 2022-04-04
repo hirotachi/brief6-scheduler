@@ -10,7 +10,7 @@ require dirname(__DIR__).'/vendor/autoload.php';
 
 
 // setup routing files
-$routingFiles = ["web" => "/", "api" => "/api", "appointments" => "/appointments"];
+$routingFiles = ["web" => "/", "api" => "/api", "appointments" => "/appointments", "auth" => "/", "users" => "/users"];
 foreach ($routingFiles as $routingFile => $routeGroup) {
     $path = dirname(__DIR__)."/routes/$routingFile.php";
     if (file_exists($path)) {
