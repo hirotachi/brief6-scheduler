@@ -37,3 +37,7 @@ export function getHeaders() {
     "Content-Type": "application/json",
   };
 }
+
+export function unCamelCase(str) {
+  return str.replace(/[A-Z][a-z]*/g, (v) => ` ${v.toLowerCase()}`);
+}

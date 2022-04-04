@@ -34,8 +34,7 @@ class UserController
             $query = "where firstName like :search or lastName like :search";
             $placeholders = ["search" => "%$search%"];
         }
-        $users = $this->model->findAll($query, $placeholders);
-        return $users;
+        return $this->model->findAll($query, $placeholders);
     }
 
     public function update(Request $req)
@@ -61,6 +60,6 @@ class UserController
         if (!$deleted) {
             return response(["error" => "deletion not successful"], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
-        return ["message" => "success"];
+        return ["message" => "deleted"];
     }
 }

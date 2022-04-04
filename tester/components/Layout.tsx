@@ -42,7 +42,7 @@ const Layout = (props: PropsWithChildren<any>) => {
             </span>
           </p>
         )}
-        {currentUser?.role === "admin" && (
+        {currentUser?.role === "admin" && !router.asPath.includes("/users") && (
           <Link href={"/users"}>
             <a className={styles.dashboard}>dashboard</a>
           </Link>

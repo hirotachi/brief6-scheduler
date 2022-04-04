@@ -29,6 +29,22 @@ const users = () => {
       })
       .catch((e) => {});
   });
+
+  const handleRemove = (user) => {
+    const canRemove = confirm(
+      `Do you really want to delete user "${user.id}" (${user.firstName} ${user.lastName})`
+    );
+    if (!canRemove) return;
+    fetch(`${apiLink}/users/${user.id}`, {
+      method: "DELETE",
+      headers: getHeaders(),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message !== "deleted") return;
+        setUsers((list) => list.filter((v) => v.id !== user.id));
+      });
+  };
   return (
     <div className={styles.users}>
       <h1 className={styles.header}>Users</h1>
@@ -42,7 +58,12 @@ const users = () => {
             return (
               <div className={styles.user} key={user.id}>
                 <div className={styles.controls}>
-                  <span className={styles.remove}>remove</span>
+                  <span
+                    className={styles.remove}
+                    onClick={() => handleRemove(user)}
+                  >
+                    remove
+                  </span>
                   <span className={styles.remove}>edit</span>
                 </div>
                 <div className={styles.fields}>
