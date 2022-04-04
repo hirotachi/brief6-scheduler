@@ -1,22 +1,47 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { bookingSlots, tomorrow } from "@components/Booking";
 import styles from "@modules/History.module.scss";
-import { BookingData, HomeContext } from "@pages/[[...slug]]";
+import { apiLink, BookingData, HomeContext } from "@pages/[[...slug]]";
 import { useRouter } from "next/router";
-import { formatDate } from "@utils/helpers";
+import { formatDate, getHeaders } from "@utils/helpers";
 
 const MyHistory = () => {
-  const { bookings, removeBooking, changeFormData } = useContext(HomeContext);
+  const [loading, setLoading] = useState(true);
+  const [bookings, setBookings] = useState([]);
+  const { changeFormData, removeBooking } = useContext(HomeContext);
   const router = useRouter();
   const startEdit = (booking: BookingData) => {
     changeFormData(booking);
     router.push("/edit");
   };
 
+  const handleRemove = (id: number) => {
+    fetch(`${apiLink}/appointments/${id}`, {
+      method: "DELETE",
+      headers: getHeaders(),
+    })
+      .then((res) => res.json())
+      .then(({ message }) => {
+        if (message !== "deleted") return;
+        setBookings((v) => v.filter((b) => b.id !== id));
+        removeBooking(id);
+      });
+  };
+
+  useEffect(() => {
+    fetch(`${apiLink}/history`, { headers: getHeaders() })
+      .then((res) => res.json())
+      .then((data) => {
+        setBookings(data.map((v) => ({ ...v, date: new Date(v.date) })));
+      })
+      .finally(() => setLoading(false));
+  });
   return (
     <div className={styles.history}>
       {!bookings.length ? (
-        <p className={styles.placeholder}>You haven't booked anything yet</p>
+        <p className={styles.placeholder}>
+          {loading ? "loading" : "You haven't booked anything yet"}
+        </p>
       ) : (
         bookings.map((booking) => {
           const { date, slot, subject, id } = booking;
@@ -27,7 +52,7 @@ const MyHistory = () => {
                   <>
                     <span
                       className={styles.remove}
-                      onClick={() => removeBooking(id)}
+                      onClick={() => handleRemove(id)}
                     >
                       remove
                     </span>

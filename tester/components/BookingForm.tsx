@@ -19,7 +19,6 @@ const BookingForm = () => {
   const {
     formData,
     changeFormData,
-    availableSlots,
     availableSlotsSet,
     handleSubmitForm,
     resetFormData,

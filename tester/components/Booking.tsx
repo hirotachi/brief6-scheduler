@@ -3,6 +3,7 @@ import styles from "@modules/Booking.module.scss";
 import BookingForm from "@components/BookingForm";
 import { HomeContext } from "@pages/[[...slug]]";
 import { formatDate } from "@utils/helpers";
+import { useRouter } from "next/router";
 
 export const bookingSlots = [
   "10 h to 10:30 h",
@@ -19,11 +20,14 @@ const Booking = () => {
   const handleChange = (e) =>
     changeFormData((v) => ({ ...v, date: e.target.valueAsDate }));
 
-  const changeBooking = (slot) =>
+  const router = useRouter();
+  const changeBooking = (slot) => {
     changeFormData((v) => ({
       ...v,
       slot,
     }));
+    router.push("/booking");
+  };
 
   return (
     <div className={styles.booking}>

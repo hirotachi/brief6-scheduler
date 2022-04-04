@@ -16,3 +16,24 @@ export function genID() {
 export function formatDate(date: Date) {
   return date.toJSON().slice(0, 10);
 }
+
+export function objToFormData<T extends object>(data: T) {
+  const formData = new FormData();
+  Object.entries(data).forEach(([key, val]) => {
+    formData.append(key, val);
+  });
+  return formData;
+}
+
+export function getAuthToken() {
+  const token = localStorage.getItem("token");
+  if (!token) return;
+  return `Bearer ${token}`;
+}
+
+export function getHeaders() {
+  return {
+    Authorization: getAuthToken(),
+    "Content-Type": "application/json",
+  };
+}

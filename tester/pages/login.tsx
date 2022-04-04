@@ -3,19 +3,31 @@ import styles from "@modules/Login.module.scss";
 import Link from "next/link";
 import useInput from "@hooks/useInput";
 import clsx from "clsx";
+import { useRouter } from "next/router";
 
 const login = () => {
   const [error, setError] = useState("");
   const [inputProps] = useInput("");
   const { value } = inputProps;
+  const router = useRouter();
   const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
     if (!value) return;
-    const formData = new FormData();
-    formData.append("key", value);
-    fetch("http://localhost:8000/login", { method: "POST", body: formData })
+
+    fetch("http://localhost:8000/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ key: value }),
+    })
       .then((res) => res.json())
-      .then(console.log);
+      .then((data) => {
+        if (data.message !== "success") {
+          return;
+        }
+        localStorage.setItem("role", data.isAdmin ? "admin" : "client");
+        localStorage.setItem("token", data.token);
+        router.replace(data.isAdmin ? "/users" : "/");
+      });
   };
   return (
     <div className={styles.login}>
