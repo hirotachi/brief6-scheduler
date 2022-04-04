@@ -23,6 +23,7 @@ class UserController
         $search = $req->query->get("q");
         if ($search) {
             $query = "where firstName like :search or lastName like :search";
+            $placeholders = ["search" => "%$search%"];
         }
         $users = $this->model->findAll($query, $placeholders);
 

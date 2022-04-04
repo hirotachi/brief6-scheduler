@@ -5,5 +5,7 @@ create table if not exists appointments
     date    date,
     subject varchar(255),
     slot    int not null,
-    foreign key (user_id) references users (id)
+    foreign key (user_id) references users (id) on delete cascade on update cascade
 );
+
+

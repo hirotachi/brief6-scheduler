@@ -6,6 +6,7 @@ class Appointment extends Model
 {
     protected string $table = "appointments";
     protected array $required = ["user_id", "date", "slot", "subject"];
+    protected bool $withTimestamps = false;
 
 
     public function findAllByUserId($id): bool|array
