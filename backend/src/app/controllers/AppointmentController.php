@@ -18,6 +18,11 @@ class AppointmentController
     }
 
 
+    public function all(Request $req)
+    {
+        return $this->model->findAll();
+    }
+
     public function history(Request $req)
     {
         $userId = $req->attributes->get("userId");

@@ -82,7 +82,7 @@ function verifyAuthToken(Request $req)
     try {
         $payload = JWT::decode($token, new Key(config()->jwtSecret, "HS256"));
         $req->attributes->set("key", $payload->key);
-        $req->attributes->set("userId", $payload->userId);
+        $req->attributes->set("userId", (int) $payload->userId);
     } catch (Exception $e) {
     }
 }

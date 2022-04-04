@@ -1,7 +1,7 @@
 import React, { FormEventHandler, useState } from "react";
 import styles from "@modules/Register.module.scss";
 import Link from "next/link";
-import { formatDate } from "@utils/helpers";
+import { formatDate, unCamelCase } from "@utils/helpers";
 import { toast } from "react-toastify";
 
 const register = () => {
@@ -66,10 +66,7 @@ const register = () => {
           <h1 className={styles.header}>Sign Up</h1>
           <form onSubmit={handleSubmit} className={styles.main}>
             {Object.entries(state).map(([key, value]) => {
-              const fieldName = key.replace(
-                /[A-Z][a-z]*/g,
-                (v) => ` ${v.toLowerCase()}`
-              );
+              const fieldName = unCamelCase(key);
               const isBirthdate = key === "birthdate";
               const inputType = isBirthdate ? "date" : "text";
               const changeHandler = (e) => {

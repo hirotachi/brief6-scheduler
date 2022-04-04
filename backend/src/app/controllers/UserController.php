@@ -16,6 +16,15 @@ class UserController
         $this->model = $model;
     }
 
+    public function me(Request $req)
+    {
+        $userId = $req->attributes->get("userId");
+        if ($userId === 0) {
+            return ["id" => 0, "firstName" => "admin", "lastName" => "admin", "role" => "admin"];
+        }
+        return $this->model->findByID($userId);
+    }
+
     public function all(Request $req)
     {
         $query = "";
@@ -26,12 +35,7 @@ class UserController
             $placeholders = ["search" => "%$search%"];
         }
         $users = $this->model->findAll($query, $placeholders);
-
-        return array_map(function ($v) {
-            $new = $v;
-            unset($new->authKey);
-            return $new;
-        }, $users);
+        return $users;
     }
 
     public function update(Request $req)

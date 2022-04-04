@@ -12,7 +12,7 @@ class Auth implements Middleware
     {
         verifyAuthToken($request);
         $userId = $request->attributes->get("userId");
-        if (!$userId) {
+        if ($userId !== 0 && !$userId) {
             return response(["error" => "Valid Bearer Token required for authorization"], Response::HTTP_UNAUTHORIZED);
         }
         return $next();
