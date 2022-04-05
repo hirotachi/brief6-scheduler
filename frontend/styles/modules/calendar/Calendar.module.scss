@@ -1,18 +1,40 @@
 @use "~abstracts" as *;
 
-
-
-.calendar{
-  .controls{
-
+.calendar {
+  .controls {
   }
-  .names{
-
+  .names,
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem;
+    text-align: center;
   }
-  .days{
-    .day{
-      &:hover{
 
+  .names {
+    .name {
+    }
+  }
+  .days {
+    user-select: none;
+    .day {
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include size(4rem);
+      font-size: 1.4rem;
+      opacity: 0.2;
+
+      &Current {
+        background-color: blue;
+      }
+      &Active {
+        opacity: 1;
+        cursor: pointer;
+        &:hover {
+          background-color: green;
+        }
       }
     }
   }

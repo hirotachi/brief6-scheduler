@@ -1,11 +1,10 @@
 @use "~abstracts" as *;
 
-*,*:after,*:before {
+*,*:before, *:after{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 
 
 html{
@@ -13,6 +12,6 @@ html{
 }
 
 body{
-  font-size: 1.6rem;
   font-family: $font-primary;
+  font-size: 1.6rem;
 }

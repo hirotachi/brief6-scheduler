@@ -1,5 +1,3 @@
-@use "variables" as *;
-
 // text mixins
 @mixin maxTextWidth($max, $min: null) {
   white-space: nowrap;
@@ -86,20 +84,4 @@
     border-#{if($direction == "horizontal", "top-right", "bottom-left")}-radius: $size;
     border-bottom-right-radius: $size;
   }
-}
-
-// padding
-@mixin normalizePadding {
-  padding: 0 $mobile-spacing;
-  @include tablet {
-    padding: 0 $tablet-spacing;
-  }
-  @include desktop {
-    padding: 0 $desktop-spacing;
-  }
-}
-
-@mixin paddingVertical($size) {
-  padding-top: $size;
-  padding-bottom: $size;
 }

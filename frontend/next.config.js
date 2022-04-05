@@ -1,6 +1,4 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+module.exports = {
   webpack: (config, options) => {
     Object.assign(config.resolve.alias, {
       abstracts: "styles/abstracts",
@@ -8,5 +6,3 @@ const nextConfig = {
     return config;
   },
 }
-
-module.exports = nextConfig

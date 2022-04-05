@@ -1,38 +1,23 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "baseUrl": ".",
-    "paths": {
-      "@components/*": [
-        "components/*"
-      ],
-      "@styles/*": [
-        "styles/*"
-      ],
-      "@modules/*": [
-        "styles/modules/*"
-      ],
-      "@hooks/*": [
-        "hooks/*"
-      ],
-      "@icons/*": [
-        "icons/*"
-      ],
-      "@pages/*": [
-        "pages/*"
-      ],
-      "@lib/*": [
-        "lib/*"
-      ],
-      "@utils/*": [
-        "utils/*"
-      ]
-    },
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"],
+      "@modules/*": ["styles/modules/*"],
+      "@hooks/*": ["hooks/*"],
+      "@icons/*": ["icons/*"],
+      "@pages/*": ["pages/*"],
+      "@lib/*": ["lib/*"],
+      "@utils/*": ["utils/*"],
+      "@graphql/*": ["graphql/*"]
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
