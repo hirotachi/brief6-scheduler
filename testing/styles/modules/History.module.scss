@@ -1,0 +1,50 @@
+@use "~abstracts" as *;
+
+.history {
+  display: grid;
+  gap: 1rem;
+  @include desktop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .placeholder {
+    grid-column: 1/-1;
+    text-align: center;
+    opacity: 0.5;
+    text-transform: capitalize;
+  }
+
+  .booking {
+    border: 1px solid black;
+    padding: 1rem;
+    position: relative;
+    display: grid;
+    gap: 1rem;
+
+    .controls {
+      grid-column: 1/-1;
+      display: flex;
+      gap: 1rem;
+      text-transform: capitalize;
+      font-size: 1.4rem;
+      font-weight: bold;
+      justify-content: flex-end;
+
+      span {
+        cursor: pointer;
+      }
+    }
+
+    .field {
+      &:first-of-type {
+        grid-column: 1/-1;
+      }
+
+      .label {
+        text-transform: capitalize;
+        font-weight: bold;
+        margin-right: 1rem;
+      }
+    }
+  }
+}

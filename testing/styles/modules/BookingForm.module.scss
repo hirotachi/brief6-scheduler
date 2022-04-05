@@ -1,0 +1,120 @@
+@use "~abstracts" as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  &Main {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    .subject {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      .text {
+        font-weight: bold;
+        font-size: 1.4rem;
+      }
+
+      input {
+        padding: 0.8rem 0.5rem;
+        border: 1px solid black;
+        transition: all 0.2s ease;
+      }
+    }
+    .error {
+      .text {
+        color: red;
+      }
+      input {
+        border-color: red;
+      }
+      .message {
+        color: red;
+        font-size: 1.4rem;
+        margin-top: 0.5rem;
+      }
+    }
+    .fields {
+      gap: 1rem;
+      display: flex;
+      flex-direction: column;
+      @include tablet {
+        flex-direction: row;
+      }
+
+      &Edit {
+        flex-direction: column;
+      }
+      .field {
+        flex: 1;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        font-size: 1.4rem;
+        &Edit {
+          flex-direction: column;
+          align-items: unset;
+        }
+        .text {
+          font-weight: bold;
+        }
+        input {
+          padding: 1rem;
+          width: 100%;
+          flex: 1;
+        }
+        .val {
+        }
+        .slots {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          .slot {
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid black;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            &Selected {
+              background-color: black;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+  .btns {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 1.4rem;
+    font-weight: bold;
+    gap: 1rem;
+    @include tablet {
+      flex-direction: row-reverse;
+    }
+    span {
+      cursor: pointer;
+      flex: 1;
+      border: 1px solid black;
+      padding: 1rem;
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+    .submit {
+      background-color: black;
+      color: white;
+    }
+    .cancel {
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+}
