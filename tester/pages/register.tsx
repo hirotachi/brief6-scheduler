@@ -4,6 +4,11 @@ import Link from "next/link";
 import { formatDate, unCamelCase } from "@utils/helpers";
 import { toast } from "react-toastify";
 
+export const accountPlaceholders = {
+  firstName: "John",
+  lastName: "Smith",
+  profession: "Software Developer",
+};
 const register = () => {
   const [key, setKey] = useState(undefined);
   const initialState = {
@@ -13,11 +18,6 @@ const register = () => {
     profession: "",
   };
   const [state, setState] = useState(initialState);
-  const placeholders: { [key in keyof typeof state]?: string } = {
-    firstName: "John",
-    lastName: "Smith",
-    profession: "Software Developer",
-  };
 
   const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
@@ -75,7 +75,7 @@ const register = () => {
                   [key]: e.target[isBirthdate ? "valueAsDate" : "value"],
                 }));
               };
-              const placeholder = placeholders[key];
+              const placeholder = accountPlaceholders[key];
               let val = state[key];
               if (isBirthdate) {
                 val = formatDate(val);
