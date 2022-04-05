@@ -83,7 +83,10 @@ const index = () => {
   };
 
   const resetFormData = () => {
-    setFormData(formDataInitialState);
+    setFormData((v) => ({
+      ...formDataInitialState,
+      date: v.id !== undefined ? formDataInitialState.date : v.date,
+    }));
   };
 
   const { availableSlots, availableSlotsSet } = useMemo(() => {
