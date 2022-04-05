@@ -1,4 +1,4 @@
-import React, { FormEventHandler, useEffect, useState } from "react";
+import React, { KeyboardEventHandler, useEffect, useState } from "react";
 import styles from "@modules/Users.module.scss";
 import {
   formatDate,
@@ -79,8 +79,8 @@ const users = () => {
         setUserForm(userFormInitialState);
       });
   };
-  const handleSubmit: FormEventHandler = (e) => {
-    e.preventDefault();
+  const handleSubmit: KeyboardEventHandler = (e) => {
+    if (e.key !== "Enter") return;
     update();
   };
 
@@ -92,6 +92,17 @@ const users = () => {
     setUserForm(userFormInitialState);
   }
 
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.key !== "Escape" || id === undefined) return;
+      cancel();
+    };
+    window.addEventListener("keyup", handler);
+    return () => {
+      window.removeEventListener("keyup", handler);
+    };
+  }, [userForm]);
+
   return (
     <div className={styles.users}>
       <h1 className={styles.header}>
@@ -99,7 +110,7 @@ const users = () => {
       </h1>
       {userForm.id !== undefined ? (
         <div className={styles.main}>
-          <form onSubmit={handleSubmit} className={styles.form}>
+          <form onKeyUp={handleSubmit} className={styles.form}>
             {Object.entries(formFields).map(([key, value]) => {
               const fieldName = unCamelCase(key);
               const isBirthdate = key === "birthdate";
