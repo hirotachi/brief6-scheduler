@@ -10,7 +10,7 @@ require dirname(__DIR__).'/vendor/autoload.php';
 
 
 // setup routing files
-$routingFiles = ["web" => "/", "api" => "/api"];
+$routingFiles = ["web" => "/", "api" => "/api", "appointments" => "/appointments", "auth" => "/", "users" => "/users"];
 foreach ($routingFiles as $routingFile => $routeGroup) {
     $path = dirname(__DIR__)."/routes/$routingFile.php";
     if (file_exists($path)) {
@@ -23,6 +23,7 @@ foreach ($routingFiles as $routingFile => $routeGroup) {
 
 $kernel = new Kernel();
 
+$kernel->cors();
 $response = $kernel->handle(Request::capture());
 $response?->send();
 

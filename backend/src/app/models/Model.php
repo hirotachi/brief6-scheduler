@@ -2,6 +2,8 @@
 
 namespace App\models;
 
+
+use App\core\VerificationException;
 use PDO;
 use PDOException;
 
@@ -24,9 +26,18 @@ abstract class Model
         }
     }
 
+    /**
+     * @throws VerificationException
+     */
     public function create($data): bool|string
     {
         $data = [...$this->getDefaults(), ...$data];
+
+        $notFilledFields = $this->verifyRequired($data);
+        if ($notFilledFields) {
+            throw new VerificationException(message: "required fields not filled", fields: $notFilledFields);
+        }
+
         $placeholders = implode(",", $this->getNamedPlaceholders($data));
         $columns = implode(",", array_keys($data));
         $statement = $this->connection->prepare("insert into $this->table ($columns) values ($placeholders)");

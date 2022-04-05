@@ -20,12 +20,16 @@ class Request extends SymfonyRequest
 
     public function getBody(): array
     {
+        $isJSON = $this->headers->get("content-type") === "application/json";
+        if ($isJSON) {
+            return (array) json_decode(file_get_contents('php://input'));
+        }
         return $this->request->all();
     }
 
     public function getBodyAsObject(): object
     {
-        return (object) $this->request->all();
+        return (object) $this->getBody();
     }
 
     public function getReferer(): ?string
