@@ -48,21 +48,21 @@ const MyHistory = () => {
           return (
             <div className={styles.booking} key={id + date.toString()}>
               <div className={styles.controls}>
+                {formatDate(date) >= formatDate(new Date()) && (
+                  <span
+                    className={styles.remove}
+                    onClick={() => handleRemove(id)}
+                  >
+                    remove
+                  </span>
+                )}
                 {formatDate(tomorrow) <= formatDate(date) && (
-                  <>
-                    <span
-                      className={styles.remove}
-                      onClick={() => handleRemove(id)}
-                    >
-                      remove
-                    </span>
-                    <span
-                      className={styles.edit}
-                      onClick={() => startEdit(booking)}
-                    >
-                      edit
-                    </span>
-                  </>
+                  <span
+                    className={styles.edit}
+                    onClick={() => startEdit(booking)}
+                  >
+                    edit
+                  </span>
                 )}
               </div>
 
