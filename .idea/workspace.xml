@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48856dbe-e753-416d-b38d-0f2c32a2d5a1" name="Changes" comment="add backend boilerplate with copied code from ancient brief">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,30 +100,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="16.13.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="16.11.25" />
-    <property name="js.buildTools.gulp.gulp_package_dir" value="$PROJECT_DIR$/node_modules/gulp" />
-    <property name="js.last.introduce.type" value="CONST" />
-    <property name="last.edited.regexp" value="/{hello}/{nice}/" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend" />
-    <property name="list.type.of.created.stylesheet" value="SCSS" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="nodejs_interpreter_path" value="node" />
-    <property name="nodejs_package_manager_path" value="pnpm" />
-    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="Configurable.PHP.Blade" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/said/Documents/projects/briefs/brief6/backend",
+    "nodejs_package_manager_path": "pnpm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\said\Documents\projects\brief5\dev\resources\views\posts" />
@@ -205,6 +192,10 @@
       <workItem from="1648467633594" duration="2136000" />
       <workItem from="1648505896857" duration="42000" />
       <workItem from="1648505940881" duration="23000" />
+      <workItem from="1649687189322" duration="197000" />
+      <workItem from="1649857381606" duration="32000" />
+      <workItem from="1652189814527" duration="407000" />
+      <workItem from="1652265547139" duration="110000" />
     </task>
     <task id="LOCAL-00015" summary="add responsive posts list on home page">
       <created>1645384898307</created>

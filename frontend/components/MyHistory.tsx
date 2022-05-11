@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { bookingSlots, tomorrow } from "@components/Booking";
-import styles from "@modules/History.module.scss";
-import { apiLink, BookingData, HomeContext } from "@pages/[[...slug]]";
-import { useRouter } from "next/router";
-import { formatDate, getHeaders } from "@utils/helpers";
+import React, { useContext, useEffect, useState } from 'react';
+import { bookingSlots, tomorrow } from '@components/Booking';
+import styles from '@modules/History.module.scss';
+import { apiLink, BookingData, HomeContext } from '@pages/[[...slug]]';
+import { useRouter } from 'next/router';
+import { formatDate, getHeaders } from '@utils/helpers';
 
 const MyHistory = () => {
   const [loading, setLoading] = useState(true);
@@ -35,7 +35,7 @@ const MyHistory = () => {
         setBookings(data.map((v) => ({ ...v, date: new Date(v.date) })));
       })
       .finally(() => setLoading(false));
-  });
+  }, []);
   return (
     <div className={styles.history}>
       {!bookings.length ? (

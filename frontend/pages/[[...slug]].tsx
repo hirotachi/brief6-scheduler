@@ -1,11 +1,11 @@
-import React, { createContext, useEffect, useMemo, useState } from "react";
-import styles from "@modules/Home.module.scss";
-import Booking, { bookingSlots, tomorrow } from "@components/Booking";
-import MyHistory from "@components/MyHistory";
-import { useRouter } from "next/router";
-import BookingForm from "@components/BookingForm";
-import { formatDate, getAuthToken, getHeaders } from "@utils/helpers";
-import Link from "next/link";
+import React, { createContext, useEffect, useMemo, useState } from 'react';
+import styles from '@modules/Home.module.scss';
+import Booking, { bookingSlots, tomorrow } from '@components/Booking';
+import MyHistory from '@components/MyHistory';
+import { useRouter } from 'next/router';
+import BookingForm from '@components/BookingForm';
+import { formatDate, getAuthToken, getHeaders } from '@utils/helpers';
+import Link from 'next/link';
 
 type HomeContextValue = {
   handleSubmitForm: () => void;
@@ -55,7 +55,7 @@ const index = () => {
   ]);
 
   const removeBooking = (id: number) => {
-    setBookings((v) => v.filter((b) => b.id !== id));
+    setBookings((v) => v.filter((b) => b.id != id));
   };
 
   const handleSubmitForm = () => {
@@ -114,6 +114,7 @@ const index = () => {
   };
 
   useEffect(() => {
+
     const authToken = getAuthToken();
     if (!authToken) {
       router.replace("/login");
