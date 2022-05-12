@@ -6,11 +6,12 @@ import { useRouter } from 'next/router';
 import BookingForm from '@components/BookingForm';
 import { formatDate, getAuthToken, getHeaders } from '@utils/helpers';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 type HomeContextValue = {
   handleSubmitForm: () => void;
   changeFormData: (
-    update: BookingData | ((data: BookingData) => BookingData)
+    update: BookingData | ((data: BookingData) => BookingData),
   ) => void;
   formData: BookingData;
   removeBooking: (id: number) => void;
@@ -30,15 +31,15 @@ export type BookingData = {
 };
 
 let currentId = 1;
-export const apiLink = "http://localhost:8000";
+export const apiLink = 'http://localhost:8000';
 
 const index = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const currentRoute = router.query?.slug?.[0] ?? "booking";
+  const currentRoute = router.query?.slug?.[0] ?? 'booking';
 
   const formDataInitialState: BookingData = {
-    subject: "",
+    subject: '',
     date: tomorrow,
     slot: undefined,
   };
@@ -48,7 +49,7 @@ const index = () => {
   const [bookings, setBookings] = useState<BookingData[]>([
     {
       slot: 0,
-      subject: "something",
+      subject: 'something',
       date: new Date(),
       id: currentId,
     },
@@ -61,20 +62,26 @@ const index = () => {
   const handleSubmitForm = () => {
     if (!formData.subject) return;
     // @ts-ignore
-    const { id = "", ["user_id"]: userId, ...data } = formData;
+    const { id = '', ['user_id']: userId, ...data } = formData;
     const handleSuccess = (booking) => {
       setBookings((list) => {
         return id
           ? list.map((b) => (b.id === id ? { ...b, ...formData } : b))
           : [...list, { ...booking, date: new Date(booking.date) }];
       });
+      toast(`appointment ${currentRoute === 'edit' ? 'updated' : 'created'}`, {
+        position: 'bottom-right',
+        isLoading: false,
+        type: toast.TYPE.SUCCESS,
+      });
       resetFormData();
-      if (currentRoute === "edit") {
-        router.replace("/history");
+      if (currentRoute === 'edit') {
+        router.replace('/history');
       }
     };
+
     fetch(`${apiLink}/appointments/${id}`, {
-      method: id ? "PUT" : "POST",
+      method: id ? 'PUT' : 'POST',
       headers: getHeaders(),
       body: JSON.stringify({ ...data, date: formatDate(data.date) }),
     })
@@ -91,7 +98,7 @@ const index = () => {
 
   const { availableSlots, availableSlotsSet } = useMemo(() => {
     const usedSlotsSet = new Set(
-      bookings.map((b) => `${formatDate(b.date)}-${b.slot}`)
+      bookings.map((b) => `${formatDate(b.date)}-${b.slot}`),
     );
     const availableSlots = bookingSlots.filter((slot, index) => {
       return !usedSlotsSet.has(`${formatDate(formData.date)}-${index}`);
@@ -117,10 +124,10 @@ const index = () => {
 
     const authToken = getAuthToken();
     if (!authToken) {
-      router.replace("/login");
+      router.replace('/login');
       return;
     }
-    fetch(apiLink + "/appointments", {
+    fetch(apiLink + '/appointments', {
       headers: getHeaders(),
     })
       .then((res) => res.json())
@@ -135,8 +142,8 @@ const index = () => {
       });
   }, []);
 
-  const isHome = currentRoute === "booking";
-  const isHistory = currentRoute === "history";
+  const isHome = currentRoute === 'booking';
+  const isHistory = currentRoute === 'history';
   return (
     <HomeContext.Provider value={contextValue}>
       {loading ? (
@@ -154,19 +161,19 @@ const index = () => {
           </div>
           <div className={styles.controls}>
             {!isHome && (
-              <Link href={"/"}>
+              <Link href={'/'}>
                 <a className={styles.booking}>new appointment</a>
               </Link>
             )}
             {!isHistory && (
-              <Link href={"/history"}>
+              <Link href={'/history'}>
                 <a className={styles.history}>My history</a>
               </Link>
             )}
           </div>
-          {isHome && <Booking />}
-          {isHistory && <MyHistory />}
-          {currentRoute === "edit" && formData.id && <BookingForm />}
+          {isHome && <Booking/>}
+          {isHistory && <MyHistory/>}
+          {currentRoute === 'edit' && formData.id && <BookingForm/>}
         </div>
       )}
     </HomeContext.Provider>
